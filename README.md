@@ -40,7 +40,7 @@ export INFLUX_SRC_TOKEN="源InfluxDB的token"
 ##### 1) 备份单个 bucket
 
 ```
-python3 backup.py --src-org 要备份的bucket所在org的名称 --src-bucket 要备份的bucket的名称 --src-host http://源influxdb地址:8086 --s3-bucket S3桶的名称 --log-level debug
+python3 backup.py --src-org 要备份的bucket所在org的名称 --src-bucket 要备份的bucket的名称 --src-host https://源influxdb地址:8086 --s3-bucket S3桶的名称 --log-level debug
 ```
 
 ##### 2) 备份所有数据
@@ -48,7 +48,7 @@ python3 backup.py --src-org 要备份的bucket所在org的名称 --src-bucket �
 以下指令会备份所有 tokens, users, buckets, dashboards
 
 ```
-python3 backup.py --full --confirm-full  --src-host http://源influxdb地址:8086 --s3-bucket S3桶的名称 --log-level debug
+python3 backup.py --full --confirm-full  --src-host https://源influxdb地址:8086 --s3-bucket S3桶的名称 --log-level debug
 ```
 
 #### 方式二： 以 csv 格式备份
@@ -56,7 +56,7 @@ python3 backup.py --full --confirm-full  --src-host http://源influxdb地址:808
 ##### 1) 备份单个 bucket
 
 ```
-python3 backup.py --src-org 源org的名称 --src-bucket 源bucket的名称 --src-host http://源influxdb地址:8086 --s3-bucket S3桶的名称 --csv --log-level debug
+python3 backup.py --src-org 源org的名称 --src-bucket 源bucket的名称 --src-host https://源influxdb地址:8086 --s3-bucket S3桶的名称 --csv --log-level debug
 ```
 
 ##### 2) 备份所有用户定义的 buckets
@@ -64,7 +64,7 @@ python3 backup.py --src-org 源org的名称 --src-bucket 源bucket的名称 --sr
 下列指令会备份所有 org 中的所有用户定义的 buckets
 
 ```
-python3 backup.py --full --src-host http://源influxdb地址:8086 --s3-bucket S3桶的名称 --csv --log-level debug
+python3 backup.py --full --src-host https://源influxdb地址:8086 --s3-bucket S3桶的名称 --csv --log-level debug
 ```
 
 ### 3. 从 S3 还原
