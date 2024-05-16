@@ -33,7 +33,7 @@ sudo ./aws/install
 export INFLUX_SRC_TOKEN="源InfluxDB的token"
 ```
 
-确保实例可以对目标 S3 桶进行读写
+确保实例可以对目标 S3 桶进行读写，可参考[此链接](https://repost.aws/zh-Hans/knowledge-center/ec2-instance-access-s3-bucket)进行配置。
 
 #### 方式一： 以 tsm 格式备份
 
@@ -75,7 +75,7 @@ python3 backup.py --full --src-host http://localhost:8086 --s3-bucket S3桶的�
 export INFLUX_DEST_TOKEN="源InfluxDB的token"
 ```
 
-确保实例可以对目标 S3 桶进行读写
+确保实例可以对目标 S3 桶进行读写，可参考[此链接](https://repost.aws/zh-Hans/knowledge-center/ec2-instance-access-s3-bucket)进行配置。
 
 #### 方式一：从 tsm 备份还原数据
 
