@@ -40,7 +40,7 @@ export INFLUX_SRC_TOKEN="源InfluxDB的token"
 ##### 1) 备份单个 bucket
 
 ```
-python3 backup.py --src-org 要备份的bucket所在org的名称 --src-bucket 要备份的bucket的名称 --src-host http://localhost:8086 --s3-bucket S3桶的名称 --log-level debug
+python3 backup.py --src-org 要备份的bucket所在org的名称 --src-bucket 要备份的bucket的名称 --src-host http://源influxdb地址:8086 --s3-bucket S3桶的名称 --log-level debug
 ```
 
 ##### 2) 备份所有数据
@@ -48,7 +48,7 @@ python3 backup.py --src-org 要备份的bucket所在org的名称 --src-bucket �
 以下指令会备份所有 tokens, users, buckets, dashboards
 
 ```
-python3 backup.py --full --confirm-full  --src-host http://localhost:8086 --s3-bucket S3桶的名称 --log-level debug
+python3 backup.py --full --confirm-full  --src-host http://源influxdb地址:8086 --s3-bucket S3桶的名称 --log-level debug
 ```
 
 #### 方式二： 以 csv 格式备份
@@ -56,7 +56,7 @@ python3 backup.py --full --confirm-full  --src-host http://localhost:8086 --s3-b
 ##### 1) 备份单个 bucket
 
 ```
-python3 backup.py --src-org 要备份的bucket所在org的名称 --src-bucket 要备份的bucket的名称 --src-host http://localhost:8086 --s3-bucket S3桶的名称 --csv --log-level debug
+python3 backup.py --src-org 源org的名称 --src-bucket 源bucket的名称 --src-host http://源influxdb地址:8086 --s3-bucket S3桶的名称 --csv --log-level debug
 ```
 
 ##### 2) 备份所有用户定义的 buckets
@@ -64,7 +64,7 @@ python3 backup.py --src-org 要备份的bucket所在org的名称 --src-bucket �
 下列指令会备份所有 org 中的所有用户定义的 buckets
 
 ```
-python3 backup.py --full --src-host http://localhost:8086 --s3-bucket S3桶的名称 --csv --log-level debug
+python3 backup.py --full --src-host http://源influxdb地址:8086 --s3-bucket S3桶的名称 --csv --log-level debug
 ```
 
 ### 3. 从 S3 还原
@@ -82,13 +82,13 @@ export INFLUX_DEST_TOKEN="目标InfluxDB的token"
 ##### 1) 还原单个 bucket
 
 ```
-python3 restore.py --src-bucket 源bucket的名称 --dest-bucket 目的bucket的名称 --dest-org 目标org名称 --s3-bucket S3桶的名称 --dest-host https://目标influxdb数据库的地址:8086 --retry-restore-dir influxdb-backups/s3桶中的某次tsm备份文件夹名称 --log-level debug
+python3 restore.py --src-org 源org的名称 --src-bucket 源bucket的名称 --dest-org 目标org名称 --dest-bucket 目标bucket的名称 --s3-bucket S3桶的名称 --dest-host https://目标influxdb地址:8086 --retry-restore-dir influxdb-backups/s3桶中的某次tsm备份文件夹名称 --log-level debug
 ```
 
 ##### 2) 还原所有数据（会完全覆盖目标数据库）
 
 ```
-python3 restore.py --full --confirm-full --s3-bucket S3桶的名称 --dest-host https://目标influxdb数据库的地址:8086 --retry-restore-dir influxdb-backups/s3桶中的某次tsm备份文件夹名称 --log-level debug
+python3 restore.py --full --confirm-full --s3-bucket S3桶的名称 --dest-host https://目标influxdb地址:8086 --retry-restore-dir influxdb-backups/s3桶中的某次tsm备份文件夹名称 --log-level debug
 ```
 
 #### 方式二：从 csv 备份还原数据
@@ -96,11 +96,11 @@ python3 restore.py --full --confirm-full --s3-bucket S3桶的名称 --dest-host 
 ##### 1) 还原单个 bucket
 
 ```
-python3 restore.py --src-org 源org的名称 --dest-org 目的org的名称 --src-bucket 源bucket的名称 --dest-bucket 目的bucket的名称 --s3-bucket s3桶的名称 --dest-host https://目标influxdb数据库的地址:8086 --retry-restore-dir influxdb-backups/s3桶中的某次csv备份文件夹名称  --csv --log-level debug
+python3 restore.py --src-org 源org的名称 --src-bucket 源bucket的名称 --dest-org 目的org的名称 --dest-bucket 目的bucket的名称 --s3-bucket s3桶的名称 --dest-host https://目标influxdb数据库的地址:8086 --retry-restore-dir influxdb-backups/s3桶中的某次csv备份文件夹名称  --csv --log-level debug
 ```
 
 ##### 2) 还原所有 buckets
 
 ```
-python3 restore.py --full --confirm-full --s3-bucket S3桶的名称 --dest-host https://目标influxdb数据库的地址:8086 --retry-restore-dir influxdb-backups/s3桶中的某次csv备份文件夹名称 --csv --log-level debug
+python3 restore.py --full --s3-bucket S3桶的名称 --dest-host https://目标influxdb数据库的地址:8086 --retry-restore-dir influxdb-backups/s3桶中的某次csv备份文件夹名称 --csv --log-level debug
 ```
