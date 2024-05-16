@@ -72,7 +72,7 @@ python3 backup.py --full --src-host http://localhost:8086 --s3-bucket S3桶的�
 首先配置环境变量
 
 ```
-export INFLUX_DEST_TOKEN="源InfluxDB的token"
+export INFLUX_DEST_TOKEN="目标InfluxDB的token"
 ```
 
 确保实例可以对目标 S3 桶进行读写，可参考[此链接](https://repost.aws/zh-Hans/knowledge-center/ec2-instance-access-s3-bucket)进行配置。
