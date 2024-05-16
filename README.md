@@ -1,7 +1,5 @@
 # influx-to-s3
 
-## 备份到 S3
-
 ### 1. 安装依赖（Ubuntu 操作系统）
 
 ```
@@ -47,7 +45,7 @@ export INFLUX_SRC_TOKEN="源InfluxDB的token"
 python3 backup.py --src-org 要备份的bucket所在org的名称 --src-bucket 要备份的bucket的名称 --src-host http://localhost:8086 --s3-bucket S3桶的名称 --log-level debug
 ```
 
-##### 2) Full Backup
+##### 2) 备份所有数据
 
 以下指令会备份所有 tokens, users, buckets, dashboards
 
@@ -63,15 +61,15 @@ python3 backup.py --full --confirm-full  --src-host http://localhost:8086 --s3-b
 python3 backup.py --src-org 要备份的bucket所在org的名称 --src-bucket 要备份的bucket的名称 --src-host http://localhost:8086 --s3-bucket S3桶的名称 --csv --log-level debug
 ```
 
-##### 2) 备份所有 bucket
+##### 2) 备份所有用户定义的 buckets
 
-备份所有 org 中的所有用户定义的 buckets
+下列指令会备份所有 org 中的所有用户定义的 buckets
 
 ```
 python3 backup.py --full --src-host http://localhost:8086 --s3-bucket S3桶的名称 --csv --log-level debug
 ```
 
-### 3. 还原数据
+### 3. 从 S3 还原
 
 首先配置环境变量
 
@@ -80,8 +78,6 @@ export INFLUX_DEST_TOKEN="源InfluxDB的token"
 ```
 
 确保实例可以对目标 S3 桶进行读写
-
-#### 3.1 还原数据
 
 #### 方式一：从 tsm 备份还原数据
 
